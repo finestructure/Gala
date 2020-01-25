@@ -28,6 +28,15 @@ public func HorizontalSizeClasses<A: View>(_ name: String? = nil, @ViewBuilder i
 }
 
 
+public func VerticalSizeClasses<A: View>(_ name: String? = nil, @ViewBuilder items: @escaping () -> A) -> some View {
+    ForEach([UserInterfaceSizeClass.compact, .regular], id: \.self) { item in
+        items()
+            .previewDisplayName(name.map { "\($0) \(item!)" } ?? "\(item!)")
+            .environment(\.verticalSizeClass, item)
+    }
+}
+
+
 public func LayoutDirections<A: View>(_ name: String? = nil, @ViewBuilder items: @escaping () -> A) -> some View {
     ForEach([LayoutDirection.leftToRight, .rightToLeft], id: \.self) { item in
         items()
