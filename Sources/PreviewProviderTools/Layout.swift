@@ -19,11 +19,11 @@ public struct Layout: Hashable, CustomStringConvertible {
         case sizeThatFits
     }
 
-    static func fixed(width: CGFloat, height: CGFloat) -> Layout {
+    public static func fixed(width: CGFloat, height: CGFloat) -> Layout {
         Layout(kind: .fixed(width: width, height: height))
     }
-    static var device: Layout { Layout(kind: .device) }
-    static var sizeThatFits: Layout { Layout(kind: .sizeThatFits) }
+    public static var device: Layout { Layout(kind: .device) }
+    public static var sizeThatFits: Layout { Layout(kind: .sizeThatFits) }
 
     public var description: String {
         switch kind {
