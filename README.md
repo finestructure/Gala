@@ -34,6 +34,7 @@ or
             ContentView()
         }
     }
+```
 
 However, Gala doesn't stop there. It also offers a few other "attribute iterators":
 
