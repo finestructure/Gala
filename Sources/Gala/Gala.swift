@@ -19,6 +19,9 @@ public func Layouts<A: View>(_ layouts: [Layout], _ name: String? = nil, @ViewBu
 }
 
 
+@available(OSX, unavailable)
+@available(tvOS, unavailable)
+@available(watchOS, unavailable)
 public func HorizontalSizeClasses<A: View>(_ name: String? = nil, @ViewBuilder items: @escaping () -> A) -> some View {
     ForEach([UserInterfaceSizeClass.compact, .regular], id: \.self) { item in
         items()
@@ -28,6 +31,9 @@ public func HorizontalSizeClasses<A: View>(_ name: String? = nil, @ViewBuilder i
 }
 
 
+@available(OSX, unavailable)
+@available(tvOS, unavailable)
+@available(watchOS, unavailable)
 public func VerticalSizeClasses<A: View>(_ name: String? = nil, @ViewBuilder items: @escaping () -> A) -> some View {
     ForEach([UserInterfaceSizeClass.compact, .regular], id: \.self) { item in
         items()
