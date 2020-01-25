@@ -1,6 +1,6 @@
 # 🎭 Gala
 
-Gala is a Swift Package Manager project for macOS, iOS, tvOS, and watchOS to help you create variants in your `PreviewProvider`.
+Gala is a Swift Package Manager project for macOS, iOS, tvOS, and watchOS to help you create SwiftUI preview variants.
 
 Say for instance you want to render your preview in both light and dark mode, you can use `LightAndDay`:
 
