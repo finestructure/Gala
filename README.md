@@ -44,6 +44,8 @@ However, Gala doesn't stop there. It also offers a few other "attribute iterator
 - `LegibilityWeights`
 - `VerticalSizeClasses`
 
+## Layouts
+
 In addition, you can iterate over a given set of layouts as follows:
 
 ```
@@ -53,6 +55,42 @@ In addition, you can iterate over a given set of layouts as follows:
         }
     }
 ```
+
+This is convenient if you have a range of frames you want to set your view up for.
+
+## Devices
+
+You can also pass in a set of devices to the `Device` iterator:
+
+```
+    static var previews: some View {
+        Devices([.iPhoneX, .iPhone11]) {
+                ContentView()
+        }
+    }
+```
+
+Thanks to autocompletion you don't have to remember the precise names. Please note that particular care has been taken to transform Apple's fantastic product names into identifiers. For instance:
+
+- `iPadPro9·7inch`
+- `iPhoneXʀ`
+- `appleWatchSeries5﹘40mm`
+
+Thanks to Swift's support of unicode identifiers you can use these (and thanks to autocomplete you can actually enter them 😅).
+
+You can also use `Devices.iPhones` (`iPads`, `watches`, `tvs`) to preview all of them:
+
+```
+    static var previews: some View {
+        Devices(.iPhones) {
+                ContentView()
+        }
+    }
+```
+
+Please note that these can take a while to render though, so it's not something that's advisable for a screen you use a lot. But it's a great use for a separate file where you set up marketing shots and want them for the full set of devices.
+
+## Name parameter
 
 All iterators take an optional `name` parameter which will add a `previewDisplayName` with the `name` and a description of the attribute to the preview.
 

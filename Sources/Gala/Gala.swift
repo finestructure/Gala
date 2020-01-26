@@ -67,3 +67,11 @@ public func ContentSizeCategories<A: View>(_ name: String? = nil, @ViewBuilder i
             .environment(\.sizeCategory, item)
     }
 }
+
+public func Devices<A: View>(_ devices: [Device], _ name: String? = nil, @ViewBuilder items: @escaping () -> A) -> some View {
+    ForEach(devices, id: \.self) { item in
+        items()
+            .previewDisplayName(name.map { "\($0) \(item)" } ?? "\(item)")
+            .previewDevice(item.previewDevice)
+    }
+}
