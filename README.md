@@ -66,7 +66,7 @@ In addition, you can iterate over a given set of layouts as follows:
     }
 ```
 
-This is convenient if you have a range of frames you want to set your view up for.
+This is convenient if you have a set of frames you want to set your view up with.
 
 ## Devices
 
