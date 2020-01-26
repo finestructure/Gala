@@ -2,7 +2,7 @@ import SwiftUI
 
 
 public func NightAndDay<A: View>(_ name: String? = nil, @ViewBuilder items: @escaping () -> A) -> some View {
-    ForEach([ColorScheme.light, .dark], id: \.self) { scheme in
+    ForEach(ColorScheme.allCases, id: \.self) { scheme in
         items()
             .previewDisplayName(name.map { "\($0) \(scheme)" } ?? "\(scheme)")
             .environment(\.colorScheme, scheme)
@@ -44,7 +44,7 @@ public func VerticalSizeClasses<A: View>(_ name: String? = nil, @ViewBuilder ite
 
 
 public func LayoutDirections<A: View>(_ name: String? = nil, @ViewBuilder items: @escaping () -> A) -> some View {
-    ForEach([LayoutDirection.leftToRight, .rightToLeft], id: \.self) { item in
+    ForEach(LayoutDirection.allCases, id: \.self) { item in
         items()
             .previewDisplayName(name.map { "\($0) \(item)" } ?? "\(item)")
             .environment(\.layoutDirection, item)
