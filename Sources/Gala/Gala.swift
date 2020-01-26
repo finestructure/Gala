@@ -59,3 +59,11 @@ public func LegibilityWeights<A: View>(_ name: String? = nil, @ViewBuilder items
             .environment(\.legibilityWeight, item)
     }
 }
+
+public func ContentSizeCategories<A: View>(_ name: String? = nil, @ViewBuilder items: @escaping () -> A) -> some View {
+    ForEach(ContentSizeCategory.allCases, id: \.self) { item in
+        items()
+            .previewDisplayName(name.map { "\($0) \(item)" } ?? "\(item)")
+            .environment(\.sizeCategory, item)
+    }
+}
