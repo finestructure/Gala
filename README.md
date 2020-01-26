@@ -30,7 +30,7 @@ or
 
 ```
     static var previews: some View {
-        ForEach([ColorScheme.light, .dark], id: \.self) { scheme in
+        ForEach(ColorScheme.allCases, id: \.self) { scheme in
             ContentView()
         }
     }
