@@ -44,6 +44,16 @@ However, Gala doesn't stop there. It also offers a few other "attribute iterator
 - `LegibilityWeights`
 - `VerticalSizeClasses`
 
+Just substitute them in for `NightAndDay`:
+
+```
+   static var previews: some View {
+       LayoutDirections {
+           ContentView()
+       }
+   }
+```
+
 ## Layouts
 
 In addition, you can iterate over a given set of layouts as follows:
