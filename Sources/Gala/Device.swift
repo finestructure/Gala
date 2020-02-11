@@ -72,3 +72,10 @@ extension Array where Element == Device {
     public static var watches: [Element] { Device.watches }
     public static var tvs: [Element] { Device.tvs }
 }
+
+
+extension View {
+    public func previewDevice(_ value: Device) -> some View {
+        return self.previewDevice(value.previewDevice)
+    }
+}
