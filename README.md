@@ -1,3 +1,6 @@
+[![](https://img.shields.io/badge/🏟-Open%20in%20Arena-yellow)](https://swifthub.site/app?dependencies=finestructure/gala)
+
+
 # 🎭 Gala
 
 Gala is a Swift Package Manager project for macOS, iOS, tvOS, and watchOS to help you create SwiftUI preview variants.
