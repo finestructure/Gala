@@ -12,6 +12,8 @@ Say for instance you want to render your preview in both light and dark mode, yo
    }
 ```
 
+![Gala demo][https://f000.backblazeb2.com/file/finestructure-public-images/posts/gala%20demo.png]
+
 Without Gala, this would have to be written as
 
 ```
