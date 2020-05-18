@@ -20,8 +20,7 @@ public enum Device: String, CaseIterable, CustomStringConvertible {
     case iPad7thGen = "iPad (7th generation)"
     case iPadPro11inch = "iPad Pro (11-inch)"
     case iPadPro12·9inch3rdGen = "iPad Pro (12.9-inch) (3nd generation)"
-    // 2020-01-26 sas: this one failed to launch the preview for me:
-    //     case iPadMini5thGen = "iPad mini (5th generation)"
+    case iPadMini5thGen = "iPad mini (5th generation)"
     case iPadAir3rdGen = "iPad Air (3rd generation)"
 
     case iPhone6s = "iPhone 6s"
@@ -50,7 +49,7 @@ public enum Device: String, CaseIterable, CustomStringConvertible {
 
     case appleTV4K = "Apple TV 4K"
 
-    public var previewDevice: PreviewDevice { PreviewDevice(stringLiteral: rawValue) }
+    
     public static var iPads: [Device] { allCases.filter { $0.rawValue.hasPrefix("iPad") } }
     public static var iPhones: [Device] { allCases.filter { $0.rawValue.hasPrefix("iPhone") } }
     public static var watches: [Device] { allCases.filter { $0.rawValue.hasPrefix("Apple Watch") } }
@@ -62,6 +61,35 @@ public enum Device: String, CaseIterable, CustomStringConvertible {
             return String(rawValue.dropFirst(trim.count))
         }
         return rawValue
+    }
+    
+    public var previewDevice: PreviewDevice {
+        let identifier = self.modelNumber ?? rawValue
+        return PreviewDevice(stringLiteral: identifier)
+    }
+    
+    //Some devices don't seem to launch reliably by name - but model number works
+    //Keep private as this is an incomplete list
+    //Model numbers from https://everyi.com/by-identifier/ipod-iphone-ipad-specs-by-model-identifier.html
+    //(with a bit of trial and error)
+    private var modelNumber:String? {
+        switch self {
+        case .iPadPro12·9inch:
+            return "iPad6,8"
+        case .iPadPro12·9inch2ndGen:
+            return "iPad7,1"
+        case .iPadPro12·9inch3rdGen:
+            return "iPad8,5"
+        case .iPadPro11inch:
+            return "iPad8,1"
+        case .iPadMini5thGen:
+            return "iPad11,1"
+        case .iPhone11ProMax:
+            return "iPhone12,5"
+            
+        default:
+            return nil
+        }
     }
 }
 
