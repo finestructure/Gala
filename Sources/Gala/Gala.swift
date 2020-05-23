@@ -4,14 +4,8 @@ import SwiftUI
 public func NightAndDay<A: View>(_ name: String? = nil, @ViewBuilder items: @escaping () -> A) -> some View {
     ForEach(ColorScheme.allCases, id: \.self) { scheme in
         // Credit https://twitter.com/heckj/status/1239968146682863618
-        ZStack {
-            if scheme == .dark {
-                Color.black
-            } else {
-                Color.white
-            }
-            items()
-        }
+        items()
+          .background(scheme == .dark ? Color.black : .white)
         .previewDisplayName(name.map { "\($0) \(scheme)" } ?? "\(scheme)")
         .environment(\.colorScheme, scheme)
     }
