@@ -26,9 +26,15 @@ public func Layouts<A: View>(_ layouts: [Layout], _ name: String? = nil, @ViewBu
 @available(watchOS, unavailable)
 public func HorizontalSizeClasses<A: View>(_ name: String? = nil, @ViewBuilder items: @escaping () -> A) -> some View {
     ForEach([UserInterfaceSizeClass.compact, .regular], id: \.self) { item in
+        #if swift(<5.3)
         items()
             .previewDisplayName(name.map { "\($0) \(item!)" } ?? "\(item!)")
             .environment(\.horizontalSizeClass, item)
+        #else
+        items()
+            .previewDisplayName(name.map { "\($0) \(item)" } ?? "\(item)")
+            .environment(\.horizontalSizeClass, item)
+        #endif
     }
 }
 
@@ -38,9 +44,15 @@ public func HorizontalSizeClasses<A: View>(_ name: String? = nil, @ViewBuilder i
 @available(watchOS, unavailable)
 public func VerticalSizeClasses<A: View>(_ name: String? = nil, @ViewBuilder items: @escaping () -> A) -> some View {
     ForEach([UserInterfaceSizeClass.compact, .regular], id: \.self) { item in
+        #if swift(<5.3)
         items()
             .previewDisplayName(name.map { "\($0) \(item!)" } ?? "\(item!)")
             .environment(\.verticalSizeClass, item)
+        #else
+        items()
+            .previewDisplayName(name.map { "\($0) \(item)" } ?? "\(item)")
+            .environment(\.verticalSizeClass, item)
+        #endif
     }
 }
 
@@ -56,9 +68,15 @@ public func LayoutDirections<A: View>(_ name: String? = nil, @ViewBuilder items:
 
 public func LegibilityWeights<A: View>(_ name: String? = nil, @ViewBuilder items: @escaping () -> A) -> some View {
     ForEach([LegibilityWeight.regular, .bold], id: \.self) { item in
+        #if swift(<5.3)
         items()
             .previewDisplayName(name.map { "\($0) \(item!)" } ?? "\(item!)")
             .environment(\.legibilityWeight, item)
+        #else
+        items()
+            .previewDisplayName(name.map { "\($0) \(item)" } ?? "\(item)")
+            .environment(\.legibilityWeight, item)
+        #endif
     }
 }
 
