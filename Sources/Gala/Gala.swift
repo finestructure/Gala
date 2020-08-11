@@ -32,7 +32,7 @@ public func HorizontalSizeClasses<A: View>(_ name: String? = nil, @ViewBuilder i
             .environment(\.horizontalSizeClass, item)
     }
     #else
-    ForEach([UserInterfaceSizeClass.compact, .regular], id: \.self) { item in
+    return ForEach([UserInterfaceSizeClass.compact, .regular], id: \.self) { item in
         items()
             .previewDisplayName(name.map { "\($0) \(item)" } ?? "\(item)")
             .environment(\.horizontalSizeClass, item)
@@ -52,7 +52,7 @@ public func VerticalSizeClasses<A: View>(_ name: String? = nil, @ViewBuilder ite
             .environment(\.verticalSizeClass, item)
     }
     #else
-    ForEach([UserInterfaceSizeClass.compact, .regular], id: \.self) { item in
+    return ForEach([UserInterfaceSizeClass.compact, .regular], id: \.self) { item in
         items()
             .previewDisplayName(name.map { "\($0) \(item)" } ?? "\(item)")
             .environment(\.verticalSizeClass, item)
@@ -78,7 +78,7 @@ public func LegibilityWeights<A: View>(_ name: String? = nil, @ViewBuilder items
             .environment(\.legibilityWeight, item)
     }
     #else
-    ForEach([LegibilityWeight.regular, .bold], id: \.self) { item in
+    return ForEach([LegibilityWeight.regular, .bold], id: \.self) { item in
         items()
             .previewDisplayName(name.map { "\($0) \(item)" } ?? "\(item)")
             .environment(\.legibilityWeight, item)
