@@ -25,17 +25,19 @@ public func Layouts<A: View>(_ layouts: [Layout], _ name: String? = nil, @ViewBu
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)
 public func HorizontalSizeClasses<A: View>(_ name: String? = nil, @ViewBuilder items: @escaping () -> A) -> some View {
-    ForEach([UserInterfaceSizeClass.compact, .regular], id: \.self) { item in
-        #if swift(<5.3)
+    #if swift(<5.3)
+    return ForEach([UserInterfaceSizeClass.compact, .regular], id: \.self) { item in
         items()
             .previewDisplayName(name.map { "\($0) \(item!)" } ?? "\(item!)")
             .environment(\.horizontalSizeClass, item)
-        #else
+    }
+    #else
+    ForEach([UserInterfaceSizeClass.compact, .regular], id: \.self) { item in
         items()
             .previewDisplayName(name.map { "\($0) \(item)" } ?? "\(item)")
             .environment(\.horizontalSizeClass, item)
-        #endif
     }
+    #endif
 }
 
 
@@ -43,17 +45,19 @@ public func HorizontalSizeClasses<A: View>(_ name: String? = nil, @ViewBuilder i
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)
 public func VerticalSizeClasses<A: View>(_ name: String? = nil, @ViewBuilder items: @escaping () -> A) -> some View {
-    ForEach([UserInterfaceSizeClass.compact, .regular], id: \.self) { item in
-        #if swift(<5.3)
+    #if swift(<5.3)
+    return ForEach([UserInterfaceSizeClass.compact, .regular], id: \.self) { item in
         items()
             .previewDisplayName(name.map { "\($0) \(item!)" } ?? "\(item!)")
             .environment(\.verticalSizeClass, item)
-        #else
+    }
+    #else
+    ForEach([UserInterfaceSizeClass.compact, .regular], id: \.self) { item in
         items()
             .previewDisplayName(name.map { "\($0) \(item)" } ?? "\(item)")
             .environment(\.verticalSizeClass, item)
-        #endif
     }
+    #endif
 }
 
 
@@ -67,17 +71,19 @@ public func LayoutDirections<A: View>(_ name: String? = nil, @ViewBuilder items:
 
 
 public func LegibilityWeights<A: View>(_ name: String? = nil, @ViewBuilder items: @escaping () -> A) -> some View {
-    ForEach([LegibilityWeight.regular, .bold], id: \.self) { item in
-        #if swift(<5.3)
+    #if swift(<5.3)
+    return ForEach([LegibilityWeight.regular, .bold], id: \.self) { item in
         items()
             .previewDisplayName(name.map { "\($0) \(item!)" } ?? "\(item!)")
             .environment(\.legibilityWeight, item)
-        #else
+    }
+    #else
+    ForEach([LegibilityWeight.regular, .bold], id: \.self) { item in
         items()
             .previewDisplayName(name.map { "\($0) \(item)" } ?? "\(item)")
             .environment(\.legibilityWeight, item)
-        #endif
     }
+    #endif
 }
 
 public func ContentSizeCategories<A: View>(_ name: String? = nil, @ViewBuilder items: @escaping () -> A) -> some View {
